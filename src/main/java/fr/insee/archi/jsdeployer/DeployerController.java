@@ -1,9 +1,6 @@
 package fr.insee.archi.jsdeployer;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

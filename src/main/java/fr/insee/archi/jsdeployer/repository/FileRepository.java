@@ -6,10 +6,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import fr.insee.archi.jsdeployer.DeployerController;
 
 @Service
 public class FileRepository implements AppRepository {
+	
+	private static Log log = LogFactory.getLog(DeployerController.class);
+	
+	@Value("${repository}")
+	private String repository;
 
 	@Override
 	public boolean cleanApp(String appName) {
@@ -25,7 +35,8 @@ public class FileRepository implements AppRepository {
 
 	@Override
 	public boolean storeApp(String appName, byte[] content) {
-		Path path = Paths.get("D:/__TEMP/js-deploy/" + appName + ".zip");
+		log.info(String.format("Repo from properties : %s", repository));
+		Path path = Paths.get(repository + appName + ".zip");
 		try {
 			Files.write(path, content);
 			return true;
