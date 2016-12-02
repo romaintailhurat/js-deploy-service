@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 
-@Import(MainConfiguration.class)
+import fr.insee.archi.jsdeployer.configuration.MainConfiguration;
+
+@Import({ MainConfiguration.class })
 @SpringBootApplication
 public class Application {
 	

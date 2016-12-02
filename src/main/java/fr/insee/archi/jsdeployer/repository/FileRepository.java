@@ -19,12 +19,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import fr.insee.archi.jsdeployer.Constants;
-import fr.insee.archi.jsdeployer.DeployerController;
 
 @Service
 public class FileRepository implements AppRepository {
 
-	private static Log log = LogFactory.getLog(DeployerController.class);
+	private static Log log = LogFactory.getLog(FileRepository.class);
 
 	@Value("${repository}")
 	private String repository;
@@ -79,7 +78,6 @@ public class FileRepository implements AppRepository {
 					makeDirIfNeeded(targetFilePath.toString());
 				} else {
 					log.info("Zip entry is a file");
-					//Files.createFile(targetFilePath);
 					InputStream is = z.getInputStream(ze);
 					Files.copy(is, targetFilePath);
 				}				
